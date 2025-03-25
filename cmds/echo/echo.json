@@ -1,0 +1,10 @@
+{
+    "cmd_name":"echo",
+    "description": "send back the words, you send to me.",
+    "arguments": [
+        {
+            "name":"text",
+            "kwargs":{"type":"str","help":"发送的内容"}
+        }
+    ]
+}
