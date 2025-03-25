@@ -1,0 +1,12 @@
+{
+    "commands": [
+        {
+            "plugin_name": "hello",
+            "config_file":"./cmds/hello/hello.json"
+        },
+        {
+            "plugin_name": "pixiv",
+            "config_file":"./cmds/pixiv/pixiv.json"
+        }
+    ]
+}

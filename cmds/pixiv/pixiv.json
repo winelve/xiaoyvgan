@@ -1,0 +1,14 @@
+{
+    "cmd_name":"pixiv",
+    "description": "download pictures from pixiv",
+    "arguments": [
+        {
+            "name":"pid",
+            "kwargs":{"type":"int","help":"pixiv 对应的图片的pid","default":"-1","nargs":"*"}
+        },
+        {
+            "flags":["-r"],
+            "kwargs":{"type":"int","help":"随机n张pixiv图片"}
+        }
+    ]
+}

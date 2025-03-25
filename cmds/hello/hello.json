@@ -1,0 +1,17 @@
+{
+    "comment1:":"这是注释: kwargs中可选的参数. type,help,nargs,action....",
+    "comment2:":"请注意,参数中的name和flags,不能同时存在",
+    
+    "cmd_name":"hello",
+    "description": "say hello",
+    "arguments": [
+        {
+            "name":"name",
+            "kwargs":{"type":"str","help":"需要问候的名字"}
+        },
+        {
+            "flags":["age"],
+            "kwargs":{"type":"int","help":"年龄"}
+        }
+    ]
+}
