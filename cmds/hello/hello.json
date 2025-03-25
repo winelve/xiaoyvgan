@@ -10,7 +10,7 @@
             "kwargs":{"type":"str","help":"需要问候的名字"}
         },
         {
-            "flags":["age"],
+            "flags":["-age"],
             "kwargs":{"type":"int","help":"年龄"}
         }
     ]

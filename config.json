@@ -7,6 +7,10 @@
         {
             "plugin_name": "pixiv",
             "config_file":"./cmds/pixiv/pixiv.json"
+        },
+        {
+            "plugin_name": "echo",
+            "config_file":"./cmds/echo/echo.json"
         }
     ]
 }
