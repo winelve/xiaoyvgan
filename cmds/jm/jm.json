@@ -1,0 +1,10 @@
+{
+    "cmd_name":"jm",
+    "description": "download jmcomic from jm.com",
+    "arguments": [
+        {
+            "name":"id",
+            "kwargs":{"type":"int","help":"pixiv 对应的图片的pid","default":"-1"}
+        }
+    ]
+}

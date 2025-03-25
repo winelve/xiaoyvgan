@@ -1,0 +1,12 @@
+download:
+  cache: true
+dir_rule:
+  base_dir: ./data/jm
+  rule: Bd_Ptitle
+plugins:
+  after_album:
+    - plugin: img2pdf
+      kwargs:
+        pdf_dir: ./data/jm/pdf/
+        filename_rule: Aid
+        max_images: 20  # 在插件级别限制图片数量

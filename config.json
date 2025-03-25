@@ -5,12 +5,12 @@
             "config_file":"./cmds/hello/hello.json"
         },
         {
-            "plugin_name": "pixiv",
-            "config_file":"./cmds/pixiv/pixiv.json"
-        },
-        {
             "plugin_name": "echo",
             "config_file":"./cmds/echo/echo.json"
+        },
+        {
+            "plugin_name": "jm",
+            "config_file":"./cmds/jm/jm.json"
         }
     ]
 }
