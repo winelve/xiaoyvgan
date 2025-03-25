@@ -1,0 +1,53 @@
+# Python 自动生成的文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 项目配置文件（按需取消注释）
+# config.json  # 如果包含敏感信息，应该忽略
+
+# 测试和调试文件
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+*.log
+*.pot
+*.pyc
+
+# 编辑器/IDE 文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 数据目录（你计划存放下载文件等的目录）
+/data/
+!/data/.gitkeep  # 可选：保留空目录
+
+# 其他系统文件
+*.bak
+*.tmp
+*.temp
