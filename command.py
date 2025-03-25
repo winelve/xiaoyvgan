@@ -1,4 +1,6 @@
-class Command:
+from abc import ABC, abstractmethod
+from typing import Dict
+class Command(ABC):
     def __init__(self, config_dict):
         # self.name
         self.name = config_dict['cmd_name']
@@ -20,12 +22,18 @@ class Command:
                 parser.add_argument(*arg["flags"], **arg["kwargs"])
             elif "name" in arg:
                 parser.add_argument(arg["name"], **arg["kwargs"])
-                
     
-    def execute(self,args):
+    @staticmethod     
+    def to_dict(type:str,file:str):
+        return {'type':type,"file":file}
+        
+                
+    @abstractmethod
+    def execute(self,args) -> Dict[str,str]:
         '''请确保自己知道args的内容'''
         print('base class of command')
         pass
+    
 
 
 

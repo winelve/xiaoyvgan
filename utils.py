@@ -1,5 +1,4 @@
 import json
-import websockets
 
 class MessageSegment:
     @staticmethod
@@ -18,8 +17,22 @@ class MessageSegment:
     def pdf(file: str) -> dict:
         return {"type": "file", "data": {"file": file}}
     
+    @staticmethod
+    def auto(type:str,file:str):
+        text_handlers = {
+            "text": MessageSegment.text,
+            "at": MessageSegment.at,
+            "image": MessageSegment.image,
+            "pdf": MessageSegment.pdf,
+        }
+        handler = text_handlers.get(type.lower())
+        if handler:
+            return handler(file)
+        else:
+            return MessageSegment.text(f"----file type error: {type}. (place:auto)----")
+        
     
-
+    
 '''
 MessageSender方法是用来,发送数据的一个类
 '''

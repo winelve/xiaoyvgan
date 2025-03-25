@@ -115,7 +115,7 @@ async def work(msg, handler: CommandHandler,sender: MessageSender):
         return
 
     # 处理命令
-    result = handler.handle(text)
+    result:Dict[str,str]|None = handler.handle(text)
 
     # 如果有结果，则发送消息
     if result:
@@ -123,7 +123,7 @@ async def work(msg, handler: CommandHandler,sender: MessageSender):
             
             await sender.send_combined(
                 target_id=msg_dict['group_id'],
-                messages=[MessageSegment.text(result)],
+                messages=[MessageSegment.auto(result['type'],result['file'])],
                 is_group=True
             )
             
@@ -131,21 +131,40 @@ async def work(msg, handler: CommandHandler,sender: MessageSender):
             
             await sender.send_combined(
                 target_id=msg_dict['user_id'],
-                messages=[MessageSegment.text(result)],
+                messages=[MessageSegment.auto(result['type'],result['file'])],
                 is_group=False
             )
+
 
 async def main():
     uri = "ws://127.0.0.1:3001"
     headers = {"Authorization": "napcat"}  # 换成 WebUI 里的 token
     handler = CommandHandler(parser)
-    async with websockets.connect(uri, extra_headers=headers) as ws:
-        print("成功连上 NapCat 的 WebSocket！")
-        sender = MessageSender(ws)  # 创建 MessageSender 实例
-        while True:
-            msg = await ws.recv()
-            await work(msg, handler, sender)  # 传入 parser,sender
-            
+    try:
+        async with websockets.connect(uri, extra_headers=headers) as ws:
+            print("成功连上 NapCat 的 WebSocket！")
+            sender = MessageSender(ws)  # 创建 MessageSender 实例
+            while True:
+                try:
+                    msg = await ws.recv()
+                    await work(msg, handler, sender)  # 传入 handler 和 sender
+                except websockets.ConnectionClosed:
+                    print("WebSocket 连接已关闭")
+                    break
+                except Exception as e:
+                    print(f"处理消息时发生错误: {e}")
+    except websockets.WebSocketException as e:
+        print(f"WebSocket 连接失败: {e}")
+    except Exception as e:
+        print(f"bot 似乎出现了点问题: {e}")
+    finally:
+        print("终止运行喵~")
 
 
-asyncio.run(main())
+try:    
+    # 运行主函数
+    asyncio.run(main())
+except KeyboardInterrupt:
+    print(f'程序被您终止了喵~')
+except Exception:
+    print(f'程序异常退出了喵!!!!')
